@@ -16,9 +16,11 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <img src='/vercel.svg' />
       <div>
-        <button onClick={handleClick}>Generator</button>
+        <button onClick={handleClick}>Generate</button>
       </div>
+
       {images.map((item, id) => (
         <img src={item} alt='' key={id} />
       ))}
