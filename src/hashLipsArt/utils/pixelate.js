@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { createCanvas, loadImage } = require("canvas");
-const basePath = process.cwd();
+const basePath = `${process.cwd()}/src/hashLipsArt`;
 const buildDir = `${basePath}/build/pixel_images`;
 const inputDir = `${basePath}/build/images`;
 const { format, pixelFormat } = require(`${basePath}/src/config.js`);

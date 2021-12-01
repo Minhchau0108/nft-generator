@@ -1,6 +1,7 @@
-const basePath = process.cwd();
+const basePath = `${process.cwd()}/src/hashLipsArt`;
+const rootPath = process.cwd();
 const fs = require("fs");
-const layersDir = `${basePath}/layers`;
+const layersDir = `${rootPath}/layers`;
 
 const { layerConfigurations } = require(`${basePath}/src/config.js`);
 
@@ -63,12 +64,15 @@ data.forEach((element) => {
 for (var layer in rarityData) {
   for (var attribute in rarityData[layer]) {
     // get chance
-    let chance =
-      ((rarityData[layer][attribute].occurrence / editionSize) * 100).toFixed(2);
+    let chance = (
+      (rarityData[layer][attribute].occurrence / editionSize) *
+      100
+    ).toFixed(2);
 
     // show two decimal places in percent
-    rarityData[layer][attribute].occurrence =
-      `${rarityData[layer][attribute].occurrence} in ${editionSize} editions (${chance} %)`;
+    rarityData[layer][
+      attribute
+    ].occurrence = `${rarityData[layer][attribute].occurrence} in ${editionSize} editions (${chance} %)`;
   }
 }
 

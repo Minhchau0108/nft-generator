@@ -1,10 +1,11 @@
-const basePath = process.cwd();
+const basePath = `${process.cwd()}/src/hashLipsArt`;
+const rootPath = process.cwd();
 const { NETWORK } = require(`${basePath}/constants/network.js`);
 const fs = require("fs");
-const sha1 = require(`${basePath}/node_modules/sha1`);
-const { createCanvas, loadImage } = require(`${basePath}/node_modules/canvas`);
-const buildDir = `${basePath}/build`;
-const layersDir = `${basePath}/layers`;
+const sha1 = require(`${rootPath}/node_modules/sha1`);
+const { createCanvas, loadImage } = require(`${rootPath}/node_modules/canvas`);
+const buildDir = `${rootPath}/public/build`;
+const layersDir = `${rootPath}/public/layers`;
 const {
   format,
   baseUri,

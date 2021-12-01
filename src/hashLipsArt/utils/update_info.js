@@ -1,4 +1,4 @@
-const basePath = process.cwd();
+const basePath = `${process.cwd()}/src/hashLipsArt`;
 const { NETWORK } = require(`${basePath}/constants/network.js`);
 const fs = require("fs");
 

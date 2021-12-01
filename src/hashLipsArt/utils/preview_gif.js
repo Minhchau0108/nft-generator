@@ -1,4 +1,4 @@
-const basePath = process.cwd();
+const basePath = `${process.cwd()}/src/hashLipsArt`;
 const fs = require("fs");
 const { createCanvas, loadImage } = require("canvas");
 const buildDir = `${basePath}/build`;
