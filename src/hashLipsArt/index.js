@@ -1,10 +1,9 @@
 const { startCreating, buildSetup } = require("./src/main.js");
 
-(() => {})();
 const imageGenerator = (config) => {
   return new Promise((resolve, reject) => {
     try {
-      buildSetup((config = {}));
+      buildSetup(config);
       startCreating();
       resolve({ message: "Success!" });
     } catch (error) {

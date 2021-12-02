@@ -11,7 +11,6 @@ const {
   description,
   background,
   uniqueDnaTorrance,
-  layerConfigurations,
   rarityDelimiter,
   shuffleLayerConfigurations,
   debugLogs,
@@ -22,6 +21,9 @@ const {
   solanaMetadata,
   gif,
 } = require('./config.js');
+let layerConfigurations = []
+
+
 const canvas = createCanvas(format.width, format.height);
 const ctx = canvas.getContext("2d");
 ctx.imageSmoothingEnabled = format.smoothing;
@@ -33,12 +35,9 @@ const HashlipsGiffer = require('../modules/HashlipsGiffer.js');
 
 let hashlipsGiffer = null;
 
-const setConfig = (config) => {
-  console.log(config)
-}
-
 function buildSetup(config) {
-  // setConfig(config);
+  layerConfigurations = [{...config}]
+  
   if (fs.existsSync(buildDir)) {
     fs.rmdirSync(buildDir, { recursive: true });
   }
