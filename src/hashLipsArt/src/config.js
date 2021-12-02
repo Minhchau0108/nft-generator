@@ -1,5 +1,5 @@
-const { MODE } = require('../constants/blend_mode.js');
-const { NETWORK } = require('../constants/network.js');
+const { MODE } = require("../constants/blend_mode.js");
+const { NETWORK } = require("../constants/network.js");
 
 const network = NETWORK.eth;
 
@@ -41,8 +41,8 @@ const shuffleLayerConfigurations = false;
 const debugLogs = false;
 
 const format = {
-  width: 512,
-  height: 512,
+  width: 200,
+  height: 200,
   smoothing: false,
 };
 
