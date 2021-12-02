@@ -35,8 +35,9 @@ const HashlipsGiffer = require('../modules/HashlipsGiffer.js');
 
 let hashlipsGiffer = null;
 
-function buildSetup(config) {
-  layerConfigurations = [{...config}]
+function buildSetup({growEditionSizeTo, layersOrder, isGif= false}) {
+  layerConfigurations = [{growEditionSizeTo, layersOrder}]
+  gif.export = isGif
   
   if (fs.existsSync(buildDir)) {
     fs.rmdirSync(buildDir, { recursive: true });

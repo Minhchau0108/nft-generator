@@ -50,7 +50,7 @@ const gif = {
   export: false,
   repeat: 0,
   quality: 100,
-  delay: 500,
+  delay: 300,
 };
 
 const text = {
