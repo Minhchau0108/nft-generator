@@ -4,7 +4,9 @@ import styles from "../styles/Home.module.css";
 export default function Home() {
   const [images, setImages] = useState([]);
   const fetchImages = async () => {
-    const results = await fetch("api/get-image");
+    const results = await fetch("api/get-image", {method: 'post', body: { 
+      
+    }});
     const response = await results.json();
     console.log(response);
     setImages(response);
@@ -16,7 +18,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <img src='/vercel.svg' />
       <div>
         <button onClick={handleClick}>Generate</button>
       </div>

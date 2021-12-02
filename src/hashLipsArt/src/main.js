@@ -1,11 +1,10 @@
-const basePath = `${process.cwd()}/src/hashLipsArt`;
-const rootPath = process.cwd();
-const { NETWORK } = require(`${basePath}/constants/network.js`);
+const { NETWORK } = require('../constants/network.js');
+const serverPath = require('../../utils/serverPath')
 const fs = require("fs");
-const sha1 = require(`${rootPath}/node_modules/sha1`);
-const { createCanvas, loadImage } = require(`${rootPath}/node_modules/canvas`);
-const buildDir = `${rootPath}/public/build`;
-const layersDir = `${rootPath}/public/layers`;
+const sha1 = require('sha1');
+const { createCanvas, loadImage } = require('canvas');
+const buildDir = serverPath('/public/build')
+const layersDir = serverPath('/public/layers')
 const {
   format,
   baseUri,
@@ -22,7 +21,7 @@ const {
   network,
   solanaMetadata,
   gif,
-} = require(`${basePath}/src/config.js`);
+} = require('./config.js');
 const canvas = createCanvas(format.width, format.height);
 const ctx = canvas.getContext("2d");
 ctx.imageSmoothingEnabled = format.smoothing;
@@ -30,11 +29,16 @@ var metadataList = [];
 var attributesList = [];
 var dnaList = new Set();
 const DNA_DELIMITER = "-";
-const HashlipsGiffer = require(`${basePath}/modules/HashlipsGiffer.js`);
+const HashlipsGiffer = require('../modules/HashlipsGiffer.js');
 
 let hashlipsGiffer = null;
 
-const buildSetup = () => {
+const setConfig = (config) => {
+  console.log(config)
+}
+
+function buildSetup(config) {
+  // setConfig(config);
   if (fs.existsSync(buildDir)) {
     fs.rmdirSync(buildDir, { recursive: true });
   }
@@ -44,7 +48,7 @@ const buildSetup = () => {
   if (gif.export) {
     fs.mkdirSync(`${buildDir}/gifs`);
   }
-};
+}
 
 const getRarityWeight = (_str) => {
   let nameWithoutExtension = _str.slice(0, -4);
