@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
+import { Button } from "antd";
 
 export default function Home() {
   const [images, setImages] = useState([]);
@@ -19,7 +20,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div>
-        <button onClick={handleClick}>Generate</button>
+        <Button onClick={handleClick}>Generate</Button>
       </div>
 
       {images.map((item, id) => (
