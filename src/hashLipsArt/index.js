@@ -1,18 +1,16 @@
-const { startCreating, buildSetup } = require('./src/main.js');
+const { startCreating, buildSetup } = require("./src/main.js");
 
-(() => {
-  
-})();
+(() => {})();
 const imageGenerator = (config) => {
   return new Promise((resolve, reject) => {
     try {
-      buildSetup(config = {});
+      buildSetup((config = {}));
       startCreating();
-      resolve({message: 'Success!'})
+      resolve({ message: "Success!" });
     } catch (error) {
-      reject(new Error('Fail!'))
+      reject(new Error("Fail!"));
     }
-  })
-}
+  });
+};
 
-module.exports = imageGenerator
+module.exports = imageGenerator;
