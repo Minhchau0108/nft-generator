@@ -1,7 +1,6 @@
-const basePath = `${process.cwd()}/src/hashLipsArt`;
-const { startCreating, buildSetup } = require(`${basePath}/src/main.js`);
+const { startCreating, buildSetup } = require('./src/main.js');
 
 (() => {
-  buildSetup();
+  buildSetup(config = {});
   startCreating();
 })();
