@@ -31,6 +31,3 @@ jobs:
 
       - name: Run eslint
         run: yarn eslint
-
-      - name: Run type check
-        run: yarn type-check
