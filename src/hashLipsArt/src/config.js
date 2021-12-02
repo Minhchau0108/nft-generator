@@ -1,5 +1,5 @@
-const { MODE } = require('./constants/blend_mode.js');
-const { NETWORK } = require('./constants/network.js');
+const { MODE } = require('../constants/blend_mode.js');
+const { NETWORK } = require('../constants/network.js');
 
 const network = NETWORK.eth;
 

@@ -1,9 +1,10 @@
-const { NETWORK } = require('./constants/network.js');
+const { NETWORK } = require('../constants/network.js');
+const serverPath = require('../../utils/serverPath')
 const fs = require("fs");
 const sha1 = require('sha1');
 const { createCanvas, loadImage } = require('canvas');
-const buildDir = `${__dirname}/public/build`;
-const layersDir = `${__dirname}/public/layers`;
+const buildDir = serverPath('/public/build')
+const layersDir = serverPath('/public/layers')
 const {
   format,
   baseUri,
@@ -32,7 +33,12 @@ const HashlipsGiffer = require('../modules/HashlipsGiffer.js');
 
 let hashlipsGiffer = null;
 
-const buildSetup = () => {
+const setConfig = (config) => {
+  console.log(config)
+}
+
+function buildSetup(config) {
+  // setConfig(config);
   if (fs.existsSync(buildDir)) {
     fs.rmdirSync(buildDir, { recursive: true });
   }
@@ -42,7 +48,7 @@ const buildSetup = () => {
   if (gif.export) {
     fs.mkdirSync(`${buildDir}/gifs`);
   }
-};
+}
 
 const getRarityWeight = (_str) => {
   let nameWithoutExtension = _str.slice(0, -4);
