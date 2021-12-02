@@ -21,7 +21,7 @@ const {
   solanaMetadata,
   gif,
 } = require('./config.js');
-const layerConfigurations = []
+let layerConfigurations = []
 
 
 const canvas = createCanvas(format.width, format.height);
@@ -35,17 +35,8 @@ const HashlipsGiffer = require('../modules/HashlipsGiffer.js');
 
 let hashlipsGiffer = null;
 
-const setLayerConfig = ({size, layers}) => {
-  const config = { 
-    growEditionSizeTo: size,
-    layersOrder: [...layers]
-  }
-  layerConfigurations = [config]
-}
-
 function buildSetup(config) {
-  setLayerConfig(config);
-
+  layerConfigurations = [{...config}]
   
   if (fs.existsSync(buildDir)) {
     fs.rmdirSync(buildDir, { recursive: true });
