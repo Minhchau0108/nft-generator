@@ -1,6 +1,5 @@
 import React from "react";
-import { Switch } from "antd";
-import { Slider, Select } from "antd";
+import { Switch, Slider, Select, Button } from "antd";
 
 const MODE_OPTION = [
   "source-over",
@@ -31,6 +30,7 @@ const Layer = ({
   handleChange,
   handleChangeOption,
   handleChangeName,
+  deleteLayer
 }) => {
   const { Option } = Select;
   const handleSelectNameLayer = (value) => {
@@ -47,7 +47,7 @@ const Layer = ({
   };
   return (
     <div className='layer'>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", justifyContent: 'center', alignItems: 'center' }}>
         <Select
           showSearch
           style={{ width: 200, backgroundColor: "#f2f2f2" }}
@@ -60,6 +60,7 @@ const Layer = ({
             </Option>
           ))}
         </Select>
+        
         <Switch
           checked={layer?.checked}
           onChange={(value) => {
@@ -69,9 +70,15 @@ const Layer = ({
           checkedChildren='On'
           unCheckedChildren='Off'
         />
+        <Button
+         shape="circle" 
+         style={{margin: '-5px -5px 0 30px', alignSelf: 'flex-start'}} 
+         size="small" onClick={() => deleteLayer()}
+         >X
+         </Button>
       </div>
 
-      <div style={{ display: "flex", marginTop: 10 }}>
+      <div style={{ marginTop: 10 }}>
         {layer?.checked && (
           <>
             <Select
@@ -86,10 +93,14 @@ const Layer = ({
                 </Option>
               ))}
             </Select>
+            <h4>Opacity</h4>
             <Slider
-              defaultValue={100}
+              defaultValue={1}
               disabled={false}
-              max={100}
+              marks={{0:'0', 1: '1'}}
+              min={0}
+              max={1}
+              step={0.01}
               onChange={(value) => {
                 handleChangeOpacity(value);
               }}

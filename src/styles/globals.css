@@ -2,6 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
+  background-color: #fafafa !important;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -22,26 +23,29 @@ a {
   grid-template-columns: repeat(6, 1fr);
   grid-row-gap: 10px;
 }
+
 .btn-generate {
   margin-top: 20px;
 }
+
 .layers {
   margin-top: 10px;
 }
+
 .label {
   margin-top: 10px;
   margin-right: 10px;
 }
-.layers {
+
+/* .layers {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-}
+} */
 
 .layer {
-  width: 430px;
+  background-color: #fff;
   margin-top: 10px;
-  border: 1px solid #8c8c8c;
+  border: 1px solid #e8e8e8;
   border-radius: 6px;
   padding: 10px;
-  min-height: 100px;
 }
