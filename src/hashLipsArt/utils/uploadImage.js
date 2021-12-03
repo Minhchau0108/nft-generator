@@ -15,9 +15,7 @@ const cloudinaryImageUploadMethod = async file => {
       if (err) {
         reject(err)
       }
-      resolve({
-        res: res.secure_url
-      })
+      resolve(res.secure_url)
     })
   })
 }

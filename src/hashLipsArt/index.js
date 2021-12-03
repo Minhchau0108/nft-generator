@@ -4,10 +4,8 @@ const imageGenerator = (config) => {
   return new Promise(async (resolve, reject) => {
     try {
       buildSetup(config);
-      const img = await startCreating();
-      const data = img.map(({res}) => {
-        return res
-      })
+      const data = await startCreating();
+
       resolve({ message: "Success!", data });
     } catch (error) {
       reject(new Error("Fail!"));

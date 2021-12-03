@@ -406,7 +406,6 @@ const startCreating = async () => {
             : null;
           const imgInfo = await saveImage(abstractedIndexes[0]);
           generatedImg.push(imgInfo)
-          console.log('imageInfo: ', imgInfo)
           addMetadata(newDna, abstractedIndexes[0]);
           saveMetaDataSingleFile(abstractedIndexes[0]);
           console.log(
