@@ -13,7 +13,7 @@ const MODE_OPTION = [
   "copy",
   "xor",
 ];
-const LAYERS = [
+const LAYERS_EYES = [
   "Background",
   "Eyeball",
   "Eye color",
@@ -23,6 +23,7 @@ const LAYERS = [
   "Top lid",
   "Goo",
 ];
+const LAYERS = ["Background", "Brow", "Eye", "Hair", "Head", "Mouth", "Nose"];
 
 const Layer = ({
   code,
@@ -30,7 +31,7 @@ const Layer = ({
   handleChange,
   handleChangeOption,
   handleChangeName,
-  deleteLayer
+  deleteLayer,
 }) => {
   const { Option } = Select;
   const handleSelectNameLayer = (value) => {
@@ -47,7 +48,13 @@ const Layer = ({
   };
   return (
     <div className='layer'>
-      <div style={{ display: "flex", justifyContent: 'center', alignItems: 'center' }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Select
           showSearch
           style={{ width: 200, backgroundColor: "#f2f2f2" }}
@@ -60,7 +67,7 @@ const Layer = ({
             </Option>
           ))}
         </Select>
-        
+
         <Switch
           checked={layer?.checked}
           onChange={(value) => {
@@ -71,11 +78,13 @@ const Layer = ({
           unCheckedChildren='Off'
         />
         <Button
-         shape="circle" 
-         style={{margin: '-5px -5px 0 30px', alignSelf: 'flex-start'}} 
-         size="small" onClick={() => deleteLayer()}
-         >X
-         </Button>
+          shape='circle'
+          style={{ margin: "-5px -5px 0 30px", alignSelf: "flex-start" }}
+          size='small'
+          onClick={() => deleteLayer()}
+        >
+          X
+        </Button>
       </div>
 
       <div style={{ marginTop: 10 }}>
@@ -97,7 +106,7 @@ const Layer = ({
             <Slider
               defaultValue={1}
               disabled={false}
-              marks={{0:'0', 1: '1'}}
+              marks={{ 0: "0", 1: "1" }}
               min={0}
               max={1}
               step={0.01}
