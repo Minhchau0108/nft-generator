@@ -23,6 +23,7 @@ const {
 } = require('./config.js');
 let layerConfigurations = []
 
+const { cloudinaryImageUploadMethod } = require('../utils/uploadImage')
 
 const canvas = createCanvas(format.width, format.height);
 const ctx = canvas.getContext("2d");
@@ -112,11 +113,14 @@ const layersSetup = (layersOrder) => {
   return layers;
 };
 
-const saveImage = (_editionCount) => {
-  fs.writeFileSync(
-    `${buildDir}/images/${_editionCount}.png`,
-    canvas.toBuffer("image/png")
-  );
+const saveImage = async (_editionCount) => {
+  // fs.writeFileSync(
+  //   `${buildDir}/images/${_editionCount}.png`,
+  //   canvas.toBuffer("image/png")
+  // );
+  const data = canvas.toBuffer().toString('base64')
+  return await cloudinaryImageUploadMethod(`data:image/png;base64,${data}`)
+
 };
 
 const genColor = () => {
@@ -337,6 +341,7 @@ const startCreating = async () => {
   let editionCount = 1;
   let failedCount = 0;
   let abstractedIndexes = [];
+  let generatedImg = []
   for (
     let i = network == NETWORK.sol ? 0 : 1;
     i <= layerConfigurations[layerConfigurations.length - 1].growEditionSizeTo;
@@ -366,7 +371,7 @@ const startCreating = async () => {
           loadedElements.push(loadLayerImg(layer));
         });
 
-        await Promise.all(loadedElements).then((renderObjectArray) => {
+        await Promise.all(loadedElements).then(async (renderObjectArray) => {
           debugLogs ? console.log("Clearing canvas") : null;
           ctx.clearRect(0, 0, format.width, format.height);
           if (gif.export) {
@@ -399,7 +404,8 @@ const startCreating = async () => {
           debugLogs
             ? console.log("Editions left to create: ", abstractedIndexes)
             : null;
-          saveImage(abstractedIndexes[0]);
+          const imgInfo = await saveImage(abstractedIndexes[0]);
+          generatedImg.push(imgInfo)
           addMetadata(newDna, abstractedIndexes[0]);
           saveMetaDataSingleFile(abstractedIndexes[0]);
           console.log(
@@ -425,6 +431,8 @@ const startCreating = async () => {
     layerConfigIndex++;
   }
   writeMetaData(JSON.stringify(metadataList, null, 2));
+
+  return generatedImg
 };
 
 module.exports = { startCreating, buildSetup, getElements };

@@ -1,11 +1,12 @@
 const { startCreating, buildSetup } = require("./src/main.js");
 
 const imageGenerator = (config) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
       buildSetup(config);
-      startCreating();
-      resolve({ message: "Success!" });
+      const data = await startCreating();
+
+      resolve({ message: "Success!", data });
     } catch (error) {
       reject(new Error("Fail!"));
     }
